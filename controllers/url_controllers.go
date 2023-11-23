@@ -37,7 +37,7 @@ func RedirectToShortUrl(c *gin.Context) {
 	shortUrl := c.Param("short_url")
 	url, err := models.GetURLByShortURL(shortUrl)
 	if err != nil {
-		c.JSON(404, gin.H{"error": err.Error()})
+		c.JSON(404, gin.H{"error": "No Url Found"})
 		return
 	}
 
@@ -54,7 +54,7 @@ func GetUrlStats(c *gin.Context) {
 	shortUrl := c.Param("short_url")
 	url, err := models.GetURLByShortURL(shortUrl)
 	if err != nil {
-		c.JSON(404, gin.H{"error": err.Error(), "short_url": shortUrl})
+		c.JSON(404, gin.H{"error": err.Error()})
 		return
 	}
 
